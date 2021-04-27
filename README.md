@@ -25,6 +25,8 @@ heap.insert(8)
     .insert(2)
 
 // [ 2, 6, 3, 10, 8, 9, 5 ]
+
+heap.remove() // 2
 ```
 
 ### MaxHeap
@@ -39,6 +41,8 @@ heap.insert(8)
     .insert(10)
 
 // [ 10, 8, 9, 6, 5, 3 ]
+
+heap.remove() // 10
 ```
 
 ### Object Min Heap
@@ -77,4 +81,6 @@ heap.insert({
 { key: 6, value: 'C' },
 { key: 8, value: 'A' }
 */
+
+heap.remove() // { key: 1, value: 'D' }
 ```
