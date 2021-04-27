@@ -26,6 +26,7 @@ export default class Heap {
 
     switchNode(index, target) {
         this.nodes[index] = this.nodes[target];
+        return target;
     }
 
     up() {
@@ -35,8 +36,7 @@ export default class Heap {
         while (index > 0) {
             let parentNodeIndex = this.parentNodeIndex(index);
             if (this.compareUp(lastNode, this.node(parentNodeIndex))) {
-                this.switchNode(index, parentNodeIndex);
-                index = parentNodeIndex;
+                index = this.switchNode(index, parentNodeIndex);
             } else {
                 break;
             }
@@ -60,8 +60,7 @@ export default class Heap {
                 : leftChildIndex;
 
             if (this.compareDown(rootNode, this.node(childNodeIndex))) {
-                this.switchNode(index, childNodeIndex);
-                index = childNodeIndex;
+                index = this.switchNode(index, childNodeIndex);
             } else {
                 break;
             }
