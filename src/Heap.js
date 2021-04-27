@@ -55,7 +55,7 @@ export default class Heap {
         while ((leftChildIndex = this.leftChildNodeIndex(index)) < total) {
             let rightChildIndex = leftChildIndex + 1;
             let childNodeIndex 
-                = rightChildIndex < total && this.nodes[leftChildIndex] > this.nodes[rightChildIndex]
+                = rightChildIndex < total && this.compareDown(this.nodes[leftChildIndex], this.nodes[rightChildIndex])
                 ? rightChildIndex
                 : leftChildIndex;
 
@@ -71,8 +71,11 @@ export default class Heap {
 
     remove() {
         let rootNode = this.nodes[0];
-        this.nodes[0] = this.nodes.pop();
-        this.down();
+        let lastNode = this.nodes.pop();
+        if (this.nodes.length > 0) {
+            this.nodes[0] = lastNode;
+            this.down();
+        }
 
         return rootNode;
     }
